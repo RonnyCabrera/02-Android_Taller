@@ -26,11 +26,6 @@ public class MainActivity extends AppCompatActivity {
         contraseña = (EditText) findViewById(R.id.textContraseniaIngresar);
     }
 
-    public void abrirPantallaRegistrar(View v) {
-        Intent intento = new Intent(getApplicationContext(), RegistrarActivity.class);
-        startActivity(intento);
-    }
-
     public void abrirPantallaIngesar(View v) {
         Usuario u = lea.leerArchivo("usuario u");
         Intent intento = new Intent(getApplicationContext(), Main2Activity.class);
@@ -45,5 +40,15 @@ public class MainActivity extends AppCompatActivity {
             mensaje.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
             mensaje.show();
         }
+    }
+
+    public void abrirPantallaLogin(View v) {
+        Intent intento = new Intent(getApplicationContext(), GmailActivity.class);
+        startActivity(intento);
+    }
+
+    public void abrirPantallaRegistrar(View v) {
+        Intent intento = new Intent(getApplicationContext(), RegistrarActivity.class);
+        startActivity(intento);
     }
 }
