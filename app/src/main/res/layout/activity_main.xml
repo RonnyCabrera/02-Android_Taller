@@ -17,12 +17,12 @@
         android:layout_marginStart="8dp"
         android:onClick="abrirPantallaIngesar"
         android:text="Ingresar"
-        app:layout_constraintBottom_toTopOf="@+id/botonInvitado"
+        app:layout_constraintBottom_toTopOf="@+id/botonRegistrarse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/botonInvitado"
+        android:id="@+id/botonRegistrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
@@ -30,13 +30,14 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:text="Invitado"
+        android:text="Registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="abrirPantallaRegistrar"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/textUsuario"
+        android:id="@+id/textUsuarioIngresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -52,7 +53,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/textContraseña"
+        android:id="@+id/textContraseniaIngresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -66,5 +67,5 @@
         app:layout_constraintBottom_toTopOf="@+id/botonIngresar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/textUsuarioIngresar" />
 </android.support.constraint.ConstraintLayout>
