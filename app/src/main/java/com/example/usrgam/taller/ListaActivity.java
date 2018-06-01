@@ -11,13 +11,15 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import modelo.Items;
 
 public class ListaActivity extends AppCompatActivity {
 
     ListView listaI;
     ArrayAdapter<Items> adaptador;
-    Items [] datos;
+    ArrayList<Items> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +27,9 @@ public class ListaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista);
 
         listaI = (ListView) findViewById(R.id.listaItems);
+        list = new ArrayList<Items>();
         cargarLista();
-        adaptador = new ArrayAdapter<Items>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, datos);
+        adaptador = new ArrayAdapter<Items>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, list);
         listaI.setAdapter(adaptador);
 
         listaI.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,7 +53,7 @@ public class ListaActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.itemVer:
                         Intent intento = new Intent(getApplicationContext(), VerActivity.class);
-                        intento.putExtra("idZapato", datos[j]);
+                        intento.putExtra("idZapato", list.get(j));
                         startActivity(intento);
                         return true;
                     case R.id.itemModificar:
@@ -68,12 +71,10 @@ public class ListaActivity extends AppCompatActivity {
     }
 
     public void cargarLista() {
-        datos = new Items[]{new Items("ZAPATO1", "marca1", "blanco", "25", "7"),
-                new Items("ZAPATO2", "marca2", "blanco", "60", "6"),
-                new Items("ZAPATO3", "marca3", "rojo", "58", "8"),
-                new Items("ZAPATO4", "marca4", "negro", "96", "6"),
-                new Items("ZAPATO5", "marca5", "verde", "85", "9"),
-                new Items("ZAPATO6", "marca6", "cafe", "84", "5"),
-                new Items("ZAPATO7", "marca7", "azul", "65", "4")};
+        list.add(new Items("ZAPATO 1", "MARCA 1", "BLANCO", "50", "8"));
+        list.add(new Items("ZAPATO 2", "MARCA 2", "NEGRO", "32", "7"));
+        list.add(new Items("ZAPATO 3", "MARCA 3", "CAFE", "45", "9"));
+        list.add(new Items("ZAPATO 4", "MARCA 4", "ROJO", "65", "7"));
+        list.add(new Items("ZAPATO 5", "MARCA 5", "AZUL", "35", "8"));
     }
 }

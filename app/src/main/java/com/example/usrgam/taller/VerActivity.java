@@ -13,7 +13,9 @@ public class VerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver);
 
+
         Items ite = (Items) getIntent().getExtras().getSerializable("idZapato");
+
         ((TextView)findViewById(R.id.nombre)).setText(ite.getNombre());
         ((TextView)findViewById(R.id.marca)).setText(ite.getMarca());
         ((TextView)findViewById(R.id.color)).setText(ite.getColor());

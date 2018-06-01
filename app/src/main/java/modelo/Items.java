@@ -14,6 +14,7 @@ public class Items implements Serializable {
     }
 
     public String getMarca() {
+
         return marca;
     }
 
