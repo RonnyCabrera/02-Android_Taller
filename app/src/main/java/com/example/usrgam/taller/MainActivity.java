@@ -30,9 +30,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void abrirPantallaLista(View v) {
+        Intent intento = new Intent(getApplicationContext(), ListaActivity.class);
         ArrayList<Usuario> u = lea.leerArchivo("usuario u");
+        boolean bandera = false;
+
         for (int i = 0; i < u.size(); i++) {
+            if(usuario.getText().toString().equals(u.get(i).getNombre()) && contraseña.getText().toString().equals(u.get(i).getContrasenia())) {
+                bandera = true;
+                break;
+            }
+            else {
+                bandera = false;
+            }
             Log.e("usuario : ", u.get(i).toString());
+        }
+        if(bandera) {
+            Toast.makeText(getApplicationContext(), "INGRESO CORRECTO", Toast.LENGTH_LONG).show();
+            startActivity(intento);
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "USUARIO O CONTRASEÑA INCORRECTOS", Toast.LENGTH_LONG).show();
         }
     }
 
