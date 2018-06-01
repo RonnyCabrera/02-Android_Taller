@@ -22,6 +22,29 @@ public class LeerEscribirArchivo {
 
     public void escribirArchivo(Usuario u, String nombre) {
         try {
+            //if(file.exists()) {
+            //FileInputStream file = new FileInputStream(ruta+nombre);
+            //ObjectInputStream in = new ObjectInputStream(file);
+
+            //list = (ArrayList<Usuario>) in.readObject();
+            //in.close();
+
+            //FileOutputStream fos = new FileOutputStream(ruta+nombre);
+            //ObjectOutputStream out = new ObjectOutputStream(fos);
+
+            //list.add(u);
+            //out.writeObject(list);
+            //out.close();
+            //}
+            //else {
+            //FileOutputStream fos = new FileOutputStream(ruta+nombre);
+            //ObjectOutputStream out = new ObjectOutputStream(fos);
+
+            //list.add(u);
+            //out.writeObject(list);
+            //out.close();
+            //}
+
             FileInputStream file = new FileInputStream(ruta+nombre);
             ObjectInputStream in = new ObjectInputStream(file);
 
