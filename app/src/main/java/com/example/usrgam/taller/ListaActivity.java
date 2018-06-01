@@ -87,22 +87,27 @@ public class ListaActivity extends AppCompatActivity {
         String val = "";
         String tal = "";
 
-        StringTokenizer  st = new StringTokenizer(agregar.getText().toString(), "-");
-        while (st.hasMoreTokens()) {
-            nom = st.nextToken();
-            mar = st.nextToken();
-            col = st.nextToken();
-            val = st.nextToken();
-            tal = st.nextToken();
+        if(agregar.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "INGRESE ALGUN DATO", Toast.LENGTH_LONG).show();
         }
-        list.get(i).setNombre(nom);
-        list.get(i).setMarca(mar);
-        list.get(i).setColor(col);
-        list.get(i).setValor(val);
-        list.get(i).setTalla(tal);
-        Toast.makeText(getApplicationContext(), "ITEM MODIFICADO", Toast.LENGTH_LONG).show();
-        agregar.setText("");
-        adaptador.notifyDataSetChanged();
+        else {
+            StringTokenizer st = new StringTokenizer(agregar.getText().toString(), "-");
+            while (st.hasMoreTokens()) {
+                nom = st.nextToken();
+                mar = st.nextToken();
+                col = st.nextToken();
+                val = st.nextToken();
+                tal = st.nextToken();
+            }
+            list.get(i).setNombre(nom);
+            list.get(i).setMarca(mar);
+            list.get(i).setColor(col);
+            list.get(i).setValor(val);
+            list.get(i).setTalla(tal);
+            Toast.makeText(getApplicationContext(), "ITEM MODIFICADO", Toast.LENGTH_LONG).show();
+            agregar.setText("");
+            adaptador.notifyDataSetChanged();
+        }
     }
 
 

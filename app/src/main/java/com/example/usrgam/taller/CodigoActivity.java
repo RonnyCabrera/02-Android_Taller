@@ -2,6 +2,7 @@ package com.example.usrgam.taller;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Build;
@@ -15,7 +16,10 @@ import android.widget.Toast;
 
 import com.google.zxing.Result;
 
+import java.util.StringTokenizer;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import modelo.Items;
 
 public class CodigoActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
@@ -31,7 +35,6 @@ public class CodigoActivity extends AppCompatActivity implements ZXingScannerVie
         scannerView=new ZXingScannerView(this);
         setContentView(scannerView);//pasar de unactivity a otro activity y atodo y con vista un pedazo
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            //CONTROLAR LOS PERMISOS
             if(verficarPermisos()){
                 Toast.makeText(getApplicationContext(),"permiso otorgado",Toast.LENGTH_LONG).show();
             }else{
@@ -76,7 +79,6 @@ public class CodigoActivity extends AppCompatActivity implements ZXingScannerVie
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //PERMISOS UN CASE POR CADA PERMISO
         switch (requestCode){
             case REQUESTCAMERA:
                 if(grantResults.length>0){
@@ -97,9 +99,33 @@ public class CodigoActivity extends AppCompatActivity implements ZXingScannerVie
     @Override
     public void handleResult(Result result) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        //alertDialog.setMessage("MENSAJE CUALQUIERA");
         alertDialog.setMessage(result.getBarcodeFormat().toString());
         alertDialog.setMessage(result.getText());
+
+        String nom = "";
+        String mar = "";
+        String col = "";
+        String val = "";
+        String tal = "";
+        String resultado = result.getText();
+        if(resultado != "") {
+
+            StringTokenizer st = new StringTokenizer(resultado, "-");
+            while (st.hasMoreTokens()) {
+                nom = st.nextToken();
+                mar = st.nextToken();
+                col = st.nextToken();
+                val = st.nextToken();
+                tal = st.nextToken();
+            }
+
+            onResume();
+
+            Items ite = new Items(nom, mar, col, val, tal);
+            Intent intento = new Intent(getApplicationContext(), VerActivity.class);
+            intento.putExtra("idZapato", ite);
+            startActivity(intento);
+        }
 
         Log.e("resultado;",result.getText());
         Log.e("resultadoBar:",result.getBarcodeFormat().toString());
