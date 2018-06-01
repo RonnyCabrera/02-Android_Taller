@@ -32,11 +32,7 @@ public class ListaActivity extends AppCompatActivity {
         listaI.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-                //Intent intento = new Intent(getApplicationContext(), Main3Activity.class);
-                //intento.putExtra("idItems", datos[i]);
-                //startActivity(intento);
                 abrirMenu(view, i);
-
             }
         });
     }
@@ -53,15 +49,14 @@ public class ListaActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.itemVer:
-                        Intent intento = new Intent(getApplicationContext(), Main3Activity.class);
+                        Intent intento = new Intent(getApplicationContext(), VerActivity.class);
                         intento.putExtra("idZapato", datos[j]);
                         startActivity(intento);
-                        //Toast.makeText(getApplicationContext(), "ver producto", Toast.LENGTH_LONG);
-                        return true;
-                    case R.id.itemComprar:
-                        Toast.makeText(getApplicationContext(), "comprar producto", Toast.LENGTH_LONG);
                         return true;
                     case R.id.itemModificar:
+                        Toast.makeText(getApplicationContext(), "comparar producto", Toast.LENGTH_LONG);
+                        return true;
+                    case R.id.itemEliminar:
                         Toast.makeText(getApplicationContext(), "comparar producto", Toast.LENGTH_LONG);
                         return true;
                 }

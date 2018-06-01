@@ -4,11 +4,12 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name ="android.hardaware.camera"/>
-    <uses-feature android:name="android.hardaware.camera.autofocus"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardaware.camera" />
+    <uses-feature android:name="android.hardaware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -38,17 +39,28 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ListaActivity"
+        <activity
+            android:name=".ListaActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".CodigoActivity"
+        <activity
+            android:name=".CodigoActivity"
             android:parentActivityName=".ListaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ListaActivity" />></activity>
+                android:value=".ListaActivity" />
+        </activity>
+        <activity
+            android:name=".VerActivity"
+            android:parentActivityName=".ListaActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListaActivity" />
+        </activity>
+        <activity android:name=".CrearActivity"></activity>
     </application>
 
 </manifest>
