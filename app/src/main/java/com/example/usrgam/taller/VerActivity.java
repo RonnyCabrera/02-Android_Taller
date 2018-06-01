@@ -16,10 +16,10 @@ public class VerActivity extends AppCompatActivity {
 
         Items ite = (Items) getIntent().getExtras().getSerializable("idZapato");
 
-        ((TextView)findViewById(R.id.nombre)).setText(ite.getNombre());
-        ((TextView)findViewById(R.id.marca)).setText(ite.getMarca());
-        ((TextView)findViewById(R.id.color)).setText(ite.getColor());
-        ((TextView)findViewById(R.id.talla)).setText(ite.getTalla());
-        ((TextView)findViewById(R.id.valor)).setText(ite.getValor());
+        ((TextView)findViewById(R.id.viewNombre)).setText(ite.getNombre());
+        ((TextView)findViewById(R.id.viewMarca)).setText(ite.getMarca());
+        ((TextView)findViewById(R.id.viewColor)).setText(ite.getColor());
+        ((TextView)findViewById(R.id.viewTalla)).setText(ite.getTalla());
+        ((TextView)findViewById(R.id.viewValor)).setText(ite.getValor());
     }
 }

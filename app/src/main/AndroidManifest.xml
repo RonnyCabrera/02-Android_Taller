@@ -60,7 +60,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ListaActivity" />
         </activity>
-        <activity android:name=".CrearActivity"></activity>
+        <activity android:name=".CrearActivity"
+            android:parentActivityName=".ListaActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListaActivity" />
+        </activity>
     </application>
 
 </manifest>

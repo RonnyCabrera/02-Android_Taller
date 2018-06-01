@@ -1,6 +1,8 @@
 package com.example.usrgam.taller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -40,6 +42,11 @@ public class ListaActivity extends AppCompatActivity {
         });
     }
 
+    public void abrirPantallaCrear(View v) {
+        Intent intento = new Intent(getApplicationContext(), CrearActivity.class);
+        startActivity(intento);
+    }
+
     public void abrirPantallaCodigo(View v) {
         Intent intento = new Intent(getApplicationContext(), CodigoActivity.class);
         startActivity(intento);
@@ -60,7 +67,7 @@ public class ListaActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "comparar producto", Toast.LENGTH_LONG);
                         return true;
                     case R.id.itemEliminar:
-                        Toast.makeText(getApplicationContext(), "comparar producto", Toast.LENGTH_LONG);
+                        dialogoAlerta(j);
                         return true;
                 }
                 return false;
@@ -76,5 +83,36 @@ public class ListaActivity extends AppCompatActivity {
         list.add(new Items("ZAPATO 3", "MARCA 3", "CAFE", "45", "9"));
         list.add(new Items("ZAPATO 4", "MARCA 4", "ROJO", "65", "7"));
         list.add(new Items("ZAPATO 5", "MARCA 5", "AZUL", "35", "8"));
+    }
+
+    public void dialogoAlerta(final int k) {
+        AlertDialog.Builder alertaDialogo = new AlertDialog.Builder(this);
+        alertaDialogo.setTitle("Mensaje : ELIMINAR");
+        alertaDialogo.setMessage("¿Desea Eliminar este Item?");
+
+        alertaDialogo.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(getApplicationContext(), "SI", Toast.LENGTH_LONG).show();
+                list.remove(k);
+                adaptador.notifyDataSetChanged();
+            }
+        });
+        alertaDialogo.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(getApplicationContext(), "NO", Toast.LENGTH_LONG).show();
+            }
+        });
+        alertaDialogo.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(getApplicationContext(), "Cancelar", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        alertaDialogo.setCancelable(true);
+        alertaDialogo.create();
+        alertaDialogo.show();
     }
 }

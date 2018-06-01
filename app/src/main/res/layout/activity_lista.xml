@@ -47,6 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/botonEscanear"
         app:layout_constraintStart_toStartOf="parent"
+        android:onClick="abrirPantallaCrear"
         app:layout_constraintTop_toBottomOf="@+id/listaItems" />
 
 </android.support.constraint.ConstraintLayout>

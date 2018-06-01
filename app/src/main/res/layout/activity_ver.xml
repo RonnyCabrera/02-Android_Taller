@@ -7,7 +7,7 @@
     tools:context=".VerActivity">
 
     <TextView
-        android:id="@+id/nombre"
+        android:id="@+id/viewNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="108dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/marca"
+        android:id="@+id/viewMarca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="108dp"
@@ -28,10 +28,10 @@
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/viewNombre" />
 
     <TextView
-        android:id="@+id/color"
+        android:id="@+id/viewColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="108dp"
@@ -40,10 +40,10 @@
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/marca" />
+        app:layout_constraintTop_toBottomOf="@+id/viewMarca" />
 
     <TextView
-        android:id="@+id/talla"
+        android:id="@+id/viewTalla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="108dp"
@@ -52,10 +52,10 @@
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/color" />
+        app:layout_constraintTop_toBottomOf="@+id/viewColor" />
 
     <TextView
-        android:id="@+id/valor"
+        android:id="@+id/viewValor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -65,7 +65,7 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/talla"
+        app:layout_constraintTop_toBottomOf="@+id/viewTalla"
         app:layout_constraintVertical_bias="0.0"
         android:textSize="20sp" />
 
@@ -80,7 +80,7 @@
         android:layout_marginTop="100dp"
         android:text="Nombre :"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/nombre"
+        app:layout_constraintEnd_toStartOf="@+id/textNombre"
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -96,7 +96,7 @@
         android:layout_marginTop="32dp"
         android:text="Marca :"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/marca"
+        app:layout_constraintEnd_toStartOf="@+id/textMarca"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -112,7 +112,7 @@
         android:layout_marginTop="32dp"
         android:text="Color :"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/color"
+        app:layout_constraintEnd_toStartOf="@+id/textColor"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -128,7 +128,7 @@
         android:layout_marginTop="32dp"
         android:text="Valor :"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/talla"
+        app:layout_constraintEnd_toStartOf="@+id/textTalla"
         app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -144,7 +144,7 @@
         android:layout_marginTop="32dp"
         android:text="Talla :"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/valor"
+        app:layout_constraintEnd_toStartOf="@+id/textValor"
         app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
