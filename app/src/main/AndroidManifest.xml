@@ -40,7 +40,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ListaActivity"></activity>
+        <activity android:name=".ListaActivity" />
+        <activity android:name=".CodigoActivity"></activity>
     </application>
 
 </manifest>
