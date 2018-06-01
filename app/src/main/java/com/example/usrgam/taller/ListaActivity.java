@@ -9,11 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import modelo.Items;
 
@@ -22,12 +25,16 @@ public class ListaActivity extends AppCompatActivity {
     ListView listaI;
     ArrayAdapter<Items> adaptador;
     ArrayList<Items> list;
-
+    EditText agregar;
+    Button modificar;
+    int posicion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
+        agregar = (EditText) findViewById(R.id.textAgregar);
+        modificar = (Button) findViewById(R.id.botonModificar);
         listaI = (ListView) findViewById(R.id.listaItems);
         list = new ArrayList<Items>();
         cargarLista();
@@ -42,10 +49,63 @@ public class ListaActivity extends AppCompatActivity {
         });
     }
 
-    public void abrirPantallaCrear(View v) {
-        Intent intento = new Intent(getApplicationContext(), CrearActivity.class);
-        startActivity(intento);
+    public void agregar(View v) {
+        String nom = "";
+        String mar = "";
+        String col = "";
+        String val = "";
+        String tal = "";
+
+        if(agregar.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "INGRESE ALGUN DATO", Toast.LENGTH_LONG).show();
+        }
+        else {
+            StringTokenizer  st = new StringTokenizer(agregar.getText().toString(), "-");
+            while (st.hasMoreTokens()) {
+                nom = st.nextToken();
+                mar = st.nextToken();
+                col = st.nextToken();
+                val = st.nextToken();
+                tal = st.nextToken();
+            }
+            list.add(new Items(nom, mar, col, val, tal));
+            Toast.makeText(getApplicationContext(), "ITEM AGREGADO", Toast.LENGTH_LONG).show();
+            agregar.setText("");
+            adaptador.notifyDataSetChanged();
+        }
     }
+
+    public void modificar(View v) {
+        dialogoModificar();
+    }
+
+    public void datoModificar() {
+        int i = posicion;
+        String nom = "";
+        String mar = "";
+        String col = "";
+        String val = "";
+        String tal = "";
+
+        StringTokenizer  st = new StringTokenizer(agregar.getText().toString(), "-");
+        while (st.hasMoreTokens()) {
+            nom = st.nextToken();
+            mar = st.nextToken();
+            col = st.nextToken();
+            val = st.nextToken();
+            tal = st.nextToken();
+        }
+        list.get(i).setNombre(nom);
+        list.get(i).setMarca(mar);
+        list.get(i).setColor(col);
+        list.get(i).setValor(val);
+        list.get(i).setTalla(tal);
+        Toast.makeText(getApplicationContext(), "ITEM MODIFICADO", Toast.LENGTH_LONG).show();
+        agregar.setText("");
+        adaptador.notifyDataSetChanged();
+    }
+
+
 
     public void abrirPantallaCodigo(View v) {
         Intent intento = new Intent(getApplicationContext(), CodigoActivity.class);
@@ -64,10 +124,12 @@ public class ListaActivity extends AppCompatActivity {
                         startActivity(intento);
                         return true;
                     case R.id.itemModificar:
-                        Toast.makeText(getApplicationContext(), "comparar producto", Toast.LENGTH_LONG);
+                        agregar.setText(list.get(j).getNombre() + "-" +list.get(j).getMarca() + "-" + list.get(j).getColor() + "-" + list.get(j).getValor() + "-" + list.get(j).getTalla());
+                        modificar.setEnabled(true);
+                        posicion = j;
                         return true;
                     case R.id.itemEliminar:
-                        dialogoAlerta(j);
+                        dialogoEliminar(j);
                         return true;
                 }
                 return false;
@@ -85,7 +147,7 @@ public class ListaActivity extends AppCompatActivity {
         list.add(new Items("ZAPATO 5", "MARCA 5", "AZUL", "35", "8"));
     }
 
-    public void dialogoAlerta(final int k) {
+    public void dialogoEliminar(final int k) {
         AlertDialog.Builder alertaDialogo = new AlertDialog.Builder(this);
         alertaDialogo.setTitle("Mensaje : ELIMINAR");
         alertaDialogo.setMessage("¿Desea Eliminar este Item?");
@@ -96,6 +158,37 @@ public class ListaActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "SI", Toast.LENGTH_LONG).show();
                 list.remove(k);
                 adaptador.notifyDataSetChanged();
+            }
+        });
+        alertaDialogo.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(getApplicationContext(), "NO", Toast.LENGTH_LONG).show();
+            }
+        });
+        alertaDialogo.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(getApplicationContext(), "Cancelar", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        alertaDialogo.setCancelable(true);
+        alertaDialogo.create();
+        alertaDialogo.show();
+    }
+
+    public void dialogoModificar() {
+        AlertDialog.Builder alertaDialogo = new AlertDialog.Builder(this);
+        alertaDialogo.setTitle("Mensaje : MODIFCAR");
+        alertaDialogo.setMessage("¿Desea Modificar este Item?");
+
+        alertaDialogo.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(getApplicationContext(), "SI", Toast.LENGTH_LONG).show();
+                datoModificar();
+                modificar.setEnabled(false);
             }
         });
         alertaDialogo.setNegativeButton("NO", new DialogInterface.OnClickListener() {
