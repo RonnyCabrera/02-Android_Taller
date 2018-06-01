@@ -51,7 +51,7 @@ public class GmailActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Intent intento = new Intent(getApplicationContext(), Main2Activity.class);
+        Intent intento = new Intent(getApplicationContext(), ListaActivity.class);
 
         if(requestCode==CODERC){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);

@@ -41,6 +41,11 @@ public class ListaActivity extends AppCompatActivity {
         });
     }
 
+    public void abrirPantallaCodigo(View v) {
+        Intent intento = new Intent(getApplicationContext(), CodigoActivity.class);
+        startActivity(intento);
+    }
+
     public void abrirMenu(View v, final int j) {
         PopupMenu menuPopupMenu = new PopupMenu(this, v);
         menuPopupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
